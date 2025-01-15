@@ -3,7 +3,7 @@ import solidPlugin from 'vite-plugin-solid';
 // import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
-  base: '/oficina',
+  base: '/f--k',
   plugins: [
     /* 
     Uncomment the following line to enable solid-devtools.
