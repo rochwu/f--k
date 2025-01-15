@@ -15,7 +15,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/google.accounts": "^0.0.14",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -30,6 +29,7 @@
     "yarn-deduplicate": "^6.0.2"
   },
   "dependencies": {
+    "firebase": "^11.1.0",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "solid-js": "^1.8.11",

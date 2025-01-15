@@ -1,5 +1,8 @@
 {
-  "cSpell.words": ["Oficina"],
+  "cSpell.words": [
+    "Firestore",
+    "Oficina"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
