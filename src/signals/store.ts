@@ -50,7 +50,7 @@ export const usersById = createResource(async () => {
   return usersById;
 });
 
-type Entry = {
+export type Entry = {
   userId: string;
   created: Timestamp;
 };

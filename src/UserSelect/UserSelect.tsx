@@ -1,13 +1,8 @@
-import {styled} from 'solid-styled-components';
 import {Select, SelectOption} from '../Select';
 import {selectedUserId, setSelectedUserId} from '../signals/send';
 import {UsersById, usersById} from '../signals/store';
 import {Label} from './Label';
-
-const Placeholder = styled('div')({
-  width: '100%',
-  textAlign: 'start',
-});
+import {Placeholder} from './Placeholder';
 
 export const UserSelect = () => {
   const userToOption = (user: UsersById[string]) => {
@@ -41,7 +36,7 @@ export const UserSelect = () => {
       defaultValue={value()}
       options={options()}
       onChange={change}
-      placeholder={<Placeholder>{'🗣️?'}</Placeholder>}
+      placeholder={<Placeholder />}
     />
   );
 };

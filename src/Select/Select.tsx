@@ -61,7 +61,12 @@ export const Field: Component<SelectProps> = (props) => {
             }}
             class="select__content"
           >
-            <Select.Listbox class="select__listbox" />
+            <Select.Listbox
+              class="select__listbox"
+              style={{
+                gap: vars.gap,
+              }}
+            />
           </Select.Content>
         </Select.Portal>
       </Select>
