@@ -29,6 +29,7 @@
     "yarn-deduplicate": "^6.0.2"
   },
   "dependencies": {
+    "@kobalte/core": "^0.13.7",
     "firebase": "^11.1.0",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
