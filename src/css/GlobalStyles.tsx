@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyles({
     fontFamily: vars.fontFamily,
     userSelect: 'none',
     '-webkit-user-select': 'none', // Safari
-    overscrollBehavior: 'none',
-    touchAction: 'none',
+    overscrollBehavior: 'none', // Stops pull-to-refresh
+    touchAction: 'none', // Stops gestures
   },
 });

@@ -2,6 +2,7 @@ import {createCssVars} from './createCssVars';
 
 export const {vars, root} = createCssVars(
   {
+    gap: '8px',
     background: '#fff8dc',
     progress: '#deb887',
     money: {

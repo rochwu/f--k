@@ -4,8 +4,8 @@
   justify-content: space-between;
   width: 100%;
   border-radius: 6px;
-  padding: 0.5em 16px;
-  line-height: 1;
+  padding: 8px 16px;
+  line-height: normal;
   outline: none;
   background-color: white;
   border: none;
@@ -20,6 +20,7 @@
 } */
 
 .select__trigger:focus-visible {
+  background-color: white;
   /* outline: none; */
   /* outline: 2px solid hsl(200 98% 39%); */
   /* outline-offset: 2px; */
@@ -29,6 +30,7 @@
   border-color: hsl(0 72% 51%);
   color: hsl(0 72% 51%);
 } */
+
 .select__value {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -59,25 +61,25 @@
 }
 
 .select__listbox {
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  max-height: 360px;
   padding: 8px;
   margin: 0;
   outline: none;
 }
 .select__item {
-  line-height: 1;
+  line-height: normal;
   color: hsl(240 4% 16%);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* height: 32px; */
   padding: 0 8px;
-  /* position: relative; */
   user-select: none;
-  /* outline: none; */
-  padding: 0.5em 8px;
+  /* Selected item is focused when default value on iOS */
+  outline: none;
+  padding: 8px 8px;
 }
 .select__item[data-disabled] {
   color: hsl(240 5% 65%);
@@ -93,7 +95,7 @@
 
 .select__section {
   padding: 8px 0 0 8px;
-  line-height: 32px;
+  /* line-height: 32px; */
   color: hsl(240 4% 46%);
 }
 .select__item-indicator {

@@ -1,23 +1,7 @@
 import {Component} from 'solid-js';
-import {UserSelect} from '../UserSelect';
-import {Piggy} from './Piggy';
-import {
-  jarRef,
-  setTotal,
-  setTotalByUserId,
-  sortedEntries,
-  total,
-  usersById,
-} from '../signals/store';
 import {effect} from 'solid-js/web';
-import {selectedUserId} from '../signals/send';
-import {
-  collection,
-  doc,
-  runTransaction,
-  serverTimestamp,
-} from 'firebase/firestore';
-import {db} from '../firebase';
+import {setTotal, setTotalByUserId, sortedEntries} from '../signals/store';
+import {Deposit} from './Deposit';
 
 export const Jar: Component = () => {
   effect(() => {
@@ -37,30 +21,9 @@ export const Jar: Component = () => {
     }
   });
 
-  const deposit = async () => {
-    const users = usersById[0]()!;
-    const userId = selectedUserId()!;
-
-    try {
-      await runTransaction(db, async (transaction) => {
-        const entryRef = doc(collection(jarRef(), 'entries'));
-
-        await transaction.set(entryRef, {
-          user: users[userId].ref,
-          created: serverTimestamp(),
-        });
-      });
-
-      sortedEntries[1].refetch();
-    } catch (error) {
-      console.error('I fucked up deposit', error);
-    }
-  };
-
   return (
     <>
-      <UserSelect />
-      <Piggy onDeposit={deposit} total={total()} />
+      <Deposit />
     </>
   );
 };

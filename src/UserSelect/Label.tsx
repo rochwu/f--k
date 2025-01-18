@@ -9,6 +9,7 @@ import {vars} from '../css';
 const Container = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
   width: '100%',
 });
 
@@ -32,7 +33,7 @@ export const Label: Component<{user: UsersById[string]}> = (props) => {
   return (
     <Container>
       <Name>{props.user.data.name}</Name>
-      <Total>{`$${totalByUserId()[props.user.id]}`}</Total>
+      <Total>{`$${totalByUserId()[props.user.id] ?? 0}`}</Total>
     </Container>
   );
 };

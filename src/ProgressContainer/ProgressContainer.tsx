@@ -7,13 +7,15 @@ import {holdTimeMs} from '../constants';
 const Container = styled('div')({
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
+
   // Small tablet
   maxHeight: '900px',
   maxWidth: '600px',
   height: '100%',
   width: '100%',
 
-  padding: '0.5em',
+  padding: vars.gap,
   boxSizing: 'border-box',
 
   backgroundImage: `linear-gradient(to top, ${vars.progress} 50%, transparent 50%)`,
