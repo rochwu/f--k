@@ -50,7 +50,11 @@ const Content: Component<{entries: Entry[]}> = (props) => {
 };
 
 export const Last = () => {
-  const entries = () => sortedEntries[0]();
+  const entries = () => {
+    const entries = sortedEntries[0]();
+
+    return (entries?.length ?? 0 > 0) ? entries : undefined;
+  };
 
   return (
     <Show when={entries()}>
