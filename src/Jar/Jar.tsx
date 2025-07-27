@@ -1,6 +1,12 @@
 import {Component, Match, Switch} from 'solid-js';
 import {effect} from 'solid-js/web';
-import {setTotal, setTotalByUserId, sortedEntries} from '@/signals/store';
+import {
+  highestUserIds,
+  setHighestUserIds,
+  setTotal,
+  setTotalByUserId,
+  sortedEntries,
+} from '@/signals/store';
 import {Deposit} from './Deposit';
 import {Mode, mode} from '@/signals/meta';
 import {List} from './List';
@@ -18,20 +24,42 @@ const Container = styled('div')({
 });
 
 export const Jar: Component = () => {
+  // On DB load, tally
   effect(() => {
     const entries = sortedEntries[0]();
 
     if (entries) {
       setTotal(entries.length);
-      setTotalByUserId(() => {
-        const next: Record<string, number> = {};
 
-        entries.forEach(({userId}) => {
-          next[userId] = (next[userId] || 0) + 1;
-        });
+      const totals: Record<string, number> = {};
+      let topScore = 0;
 
-        return next;
+      entries.forEach(({userId}) => {
+        const next = (totals[userId] || 0) + 1;
+
+        totals[userId] = (totals[userId] || 0) + 1;
+
+        if (next > topScore) {
+          topScore = next;
+        }
       });
+
+      setTotalByUserId(totals);
+
+      if (topScore > 0) {
+        setHighestUserIds(
+          Object.entries(totals).reduce<ReturnType<typeof highestUserIds>>(
+            (ids, [id, entries]) => {
+              if (entries === topScore) {
+                ids[id] = true;
+              }
+
+              return ids;
+            },
+            {},
+          ),
+        );
+      }
     }
   });
 

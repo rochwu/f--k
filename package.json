@@ -6,7 +6,7 @@
     "start": "vite --open",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
+    "serve": "yarn build && vite preview",
     "check-types": "tsc --noEmit",
     "clean-branches": "git branch | grep -v \"main\" | xargs git branch -D",
     "deduplicate": "yarn-deduplicate",

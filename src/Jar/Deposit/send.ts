@@ -6,7 +6,8 @@ import {
 } from 'firebase/firestore';
 import {db} from '@/firebase';
 import {selectedUserId} from '@/signals/send';
-import {jarRef, sortedEntries, usersById} from '@/signals/store';
+import {jarRef, usersById} from '@/signals/store';
+import {reload} from '@/signals/reload';
 
 export const send = async () => {
   if (import.meta.env.MODE !== 'production') {
@@ -27,7 +28,7 @@ export const send = async () => {
       });
     });
 
-    sortedEntries[1].refetch();
+    reload();
   } catch (error) {
     console.error('I fucked up deposit', error);
   }

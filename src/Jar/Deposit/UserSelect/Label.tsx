@@ -1,8 +1,9 @@
-import {Component} from 'solid-js';
+import {Component, Show} from 'solid-js';
 import {styled} from 'solid-styled-components';
 
-import {totalByUserId, UsersById} from '@/signals/store';
 import {vars} from '@/css';
+import {highestUserIds, totalByUserId, UsersById} from '@/signals/store';
+import {IconCrown} from '@tabler/icons-solidjs';
 
 const Container = styled('div')({
   display: 'flex',
@@ -12,23 +13,46 @@ const Container = styled('div')({
 });
 
 const Name = styled('div')({
+  display: 'flex',
+  gap: vars.gap,
   color: vars.interactive.selection,
 });
 
 const Total = styled('div')({
   display: 'flex',
+  gap: vars.gap,
+});
+
+const Score = styled('div')({
+  display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   color: vars.money.color,
-  height: vars.user.total.size,
   fontSize: vars.user.total.fontSize,
 });
 
+const TopScorer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 export const Label: Component<{user: UsersById[string]}> = (props) => {
+  const isHighScore = () => {
+    return props.user.id in highestUserIds();
+  };
+
   return (
     <Container>
       <Name>{props.user.data.name}</Name>
-      <Total>{`$${totalByUserId()[props.user.id] ?? 0}`}</Total>
+      <Total>
+        <Show when={isHighScore()}>
+          <TopScorer>
+            <IconCrown color="gold" />
+          </TopScorer>
+        </Show>
+        <Score>${totalByUserId()[props.user.id] ?? 0}</Score>
+      </Total>
     </Container>
   );
 };

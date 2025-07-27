@@ -80,3 +80,7 @@ export const [total, setTotal] = createSignal(0);
 export const [totalByUserId, setTotalByUserId] = createSignal<
   Record<string, number>
 >({});
+
+export const [highestUserIds, setHighestUserIds] = createSignal<
+  Record<string, true>
+>({});
