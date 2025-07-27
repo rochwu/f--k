@@ -5,6 +5,17 @@ import {Deposit} from './Deposit';
 import {Mode, mode} from '@/signals/meta';
 import {List} from './List';
 import {Go} from './Go';
+import {styled} from 'solid-styled-components';
+
+const Container = styled('div')({
+  height: '100%',
+  width: '100%',
+  position: 'relative',
+
+  // Small tablet
+  maxHeight: '900px',
+  maxWidth: '600px',
+});
 
 export const Jar: Component = () => {
   effect(() => {
@@ -25,15 +36,17 @@ export const Jar: Component = () => {
   });
 
   return (
-    <Switch>
-      <Match when={mode() === Mode.Deposit}>
-        <Deposit />
-        <Go mode={Mode.List} />
-      </Match>
-      <Match when={mode() === Mode.List}>
-        <List />
-        <Go mode={Mode.Deposit} />
-      </Match>
-    </Switch>
+    <Container>
+      <Switch>
+        <Match when={mode() === Mode.Deposit}>
+          <Deposit />
+          <Go mode={Mode.List} />
+        </Match>
+        <Match when={mode() === Mode.List}>
+          <List />
+          <Go mode={Mode.Deposit} />
+        </Match>
+      </Switch>
+    </Container>
   );
 };

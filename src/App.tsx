@@ -5,10 +5,11 @@ import {Jar} from './Jar';
 import {jar, sortedEntries, usersById} from './signals/store';
 
 const Background = styled('div')({
+  // Needed when in big screen
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  position: 'relative',
+
   height: '100dvh',
   width: '100dvw',
   backgroundColor: vars.background,
