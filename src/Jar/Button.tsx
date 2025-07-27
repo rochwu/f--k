@@ -18,7 +18,10 @@ const Container = styled('button')({
   alignItems: 'center',
   backgroundColor: vars.interactive.background,
   borderRadius: '50%',
-  padding: '1px',
+
+  // iOS best practices
+  width: vars.buttonSize,
+  aspectRatio: '1',
 });
 
 const iconProps: IconProps = {

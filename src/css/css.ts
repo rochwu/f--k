@@ -11,6 +11,7 @@ export const {vars, root} = createCssVars(
     },
     fontFamily: '"Parkinsans", sans-serif',
     delete: '#DC143C',
+    buttonSize: '44px', // iOS best practices
   },
   (base) => ({
     interactive: {

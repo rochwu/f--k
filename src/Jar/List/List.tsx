@@ -4,6 +4,7 @@ import {Component, For} from 'solid-js';
 import {styled} from 'solid-styled-components';
 import {entry} from '../entry';
 import {Item} from './Item';
+import {IconArrowBarToDown} from '@tabler/icons-solidjs';
 
 type Props = {};
 
@@ -18,26 +19,29 @@ const Container = styled('div')({
 });
 
 const Hint = styled('div')({
-  color: vars.progress,
-  textAlign: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 export const List: Component<Props> = () => {
-  const entries = () => {
-    const lastFive = sortedEntries[0]()?.slice(-5);
-
+  const lastFive = () => {
     const users = usersById[0]();
 
-    return lastFive?.map((thing) => {
-      // If there's an entry, then users should be defined
-      return {...entry({entry: thing, users: users!}), ref: thing.ref};
-    });
+    return sortedEntries[0]()
+      ?.slice(-5)
+      ?.map((thing) => {
+        // If there's an entry, then users should be defined
+        return {...entry({entry: thing, users: users!}), ref: thing.ref};
+      });
   };
 
   return (
     <Container>
-      <For each={entries()}>{(thing) => <Item {...thing} />}</For>
-      <Hint>Last</Hint>
+      <For each={lastFive()}>{(thing) => <Item {...thing} />}</For>
+      <Hint>
+        <IconArrowBarToDown color={vars.progress} />
+      </Hint>
     </Container>
   );
 };
