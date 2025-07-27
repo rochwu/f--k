@@ -13,6 +13,7 @@
   transition:
     border-color 250ms,
     color 250ms;
+  cursor: pointer;
 }
 
 /* .select__trigger:hover {
@@ -84,6 +85,7 @@
   /* Selected item is focused when default value on iOS */
   outline: none;
   padding: 8px 8px;
+  cursor: pointer;
 }
 
 .select__item[data-disabled] {

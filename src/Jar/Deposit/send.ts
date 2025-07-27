@@ -10,11 +10,6 @@ import {jarRef, usersById} from '@/signals/store';
 import {reload} from '@/signals/reload';
 
 export const send = async () => {
-  if (import.meta.env.MODE !== 'production') {
-    console.log('Deposit skipped in development');
-    return;
-  }
-
   const users = usersById[0]()!;
   const userId = selectedUserId()!;
 
@@ -30,6 +25,6 @@ export const send = async () => {
 
     reload();
   } catch (error) {
-    console.error('I fucked up deposit', error);
+    console.error('❌ I fucked up deposit', error);
   }
 };

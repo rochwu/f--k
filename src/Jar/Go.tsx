@@ -1,32 +1,17 @@
 import {Mode, setMode} from '@/signals/meta';
-import {Component, Match, Switch} from 'solid-js';
-import {styled} from 'solid-styled-components';
-import {
-  IconProps,
-  IconCoin,
-  IconDotsCircleHorizontal,
-} from '@tabler/icons-solidjs';
+import {IconCoin, IconDotsCircleHorizontal} from '@tabler/icons-solidjs';
+import {Component, JSX, Match, Switch} from 'solid-js';
+import {Button} from './Button';
 import {vars} from '@/css';
 
 type Props = {
   mode: Mode;
 };
 
-const Container = styled('div')({
+const style: JSX.CSSProperties = {
   position: 'absolute',
   bottom: vars.gap,
   left: vars.gap,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: vars.interactive.background,
-  borderRadius: '50%',
-  padding: '1px',
-});
-
-const iconProps: IconProps = {
-  size: '2em',
-  color: vars.interactive.hint,
 };
 
 /**
@@ -34,20 +19,19 @@ const iconProps: IconProps = {
  * One can only go from a specific mode to another
  */
 export const Go: Component<Props> = (props) => {
-  const click = () => {
+  const set = () => {
     setMode(props.mode);
   };
 
-  return (
-    <Container onClick={click}>
-      <Switch>
-        <Match when={props.mode === Mode.Deposit}>
-          <IconCoin {...iconProps} />
-        </Match>
-        <Match when={props.mode === Mode.List}>
-          <IconDotsCircleHorizontal {...iconProps} />
-        </Match>
-      </Switch>
-    </Container>
-  );
+  const mode = () => {
+    switch (props.mode) {
+      case Mode.List:
+        return IconDotsCircleHorizontal;
+      case Mode.Deposit:
+      default:
+        return IconCoin;
+    }
+  };
+
+  return <Button onPointerDown={set} icon={mode()} style={style} />;
 };

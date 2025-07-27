@@ -26,7 +26,7 @@ const run = async () => {
     const batch = writeBatch(db);
 
     entries.forEach((entry) => {
-      const {user, create, time} = entry.data();
+      const {user, time} = entry.data();
 
       if (time) {
         batch.set(entry.ref, {user, created: time});
@@ -35,9 +35,9 @@ const run = async () => {
 
     // await batch.commit();
 
-    console.log('Conversion completed ✅');
+    console.log('✅ conversion completed');
   } catch (error) {
-    console.error('I fucked up', error);
+    console.error('❌ I fucked up', error);
   }
 };
 
