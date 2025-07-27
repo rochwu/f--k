@@ -12,6 +12,7 @@ import {Mode, mode} from '@/signals/meta';
 import {List} from './List';
 import {Go} from './Go';
 import {styled} from 'solid-styled-components';
+import {Share} from './Share';
 
 const Container = styled('div')({
   height: '100%',
@@ -75,6 +76,7 @@ export const Jar: Component = () => {
           <Go mode={Mode.Deposit} />
         </Match>
       </Switch>
+      <Share />
     </Container>
   );
 };
