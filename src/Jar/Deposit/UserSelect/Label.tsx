@@ -1,10 +1,8 @@
-export const Option = () => {};
-
+import {Component} from 'solid-js';
 import {styled} from 'solid-styled-components';
 
-import {totalByUserId, UsersById} from '../signals/store';
-import {Component} from 'solid-js';
-import {vars} from '../css';
+import {totalByUserId, UsersById} from '@/signals/store';
+import {vars} from '@/css';
 
 const Container = styled('div')({
   display: 'flex',
@@ -14,17 +12,14 @@ const Container = styled('div')({
 });
 
 const Name = styled('div')({
-  color: vars.select.color,
+  color: vars.interactive.selection,
 });
 
 const Total = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  // borderRadius: '8px',
   color: vars.money.color,
-  // backgroundColor: vars.user.total.backgroundColor,
-  // width: vars.user.total.size,
   height: vars.user.total.size,
   fontSize: vars.user.total.fontSize,
 });

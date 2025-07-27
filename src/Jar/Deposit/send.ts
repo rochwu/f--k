@@ -4,9 +4,9 @@ import {
   runTransaction,
   serverTimestamp,
 } from 'firebase/firestore';
-import {db} from '../firebase';
-import {selectedUserId} from '../signals/send';
-import {jarRef, sortedEntries, usersById} from '../signals/store';
+import {db} from '@/firebase';
+import {selectedUserId} from '@/signals/send';
+import {jarRef, sortedEntries, usersById} from '@/signals/store';
 
 export const send = async () => {
   if (import.meta.env.MODE !== 'production') {

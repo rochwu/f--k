@@ -1,8 +1,8 @@
 import {JSXElement, type Component} from 'solid-js';
 import {styled} from 'solid-styled-components';
-import {vars} from '../css';
-import {held} from '../signals/send';
-import {holdTimeMs} from '../constants';
+import {vars} from '@/css';
+import {held} from '@/signals/send';
+import {holdTimeMs} from '@/constants';
 
 const Container = styled('div')({
   display: 'flex',

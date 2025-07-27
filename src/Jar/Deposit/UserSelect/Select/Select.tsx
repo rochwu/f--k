@@ -1,10 +1,10 @@
-import {Accessor, Component, createSignal, JSX, JSXElement} from 'solid-js';
+import {Component, JSXElement} from 'solid-js';
 import {styled} from 'solid-styled-components';
 
 import {Select, SelectRootProps} from '@kobalte/core/select';
 
+import {vars} from '@/css';
 import './style.css';
-import {vars} from '../css';
 
 export type SelectOption = {
   label: JSXElement;
@@ -46,7 +46,7 @@ export const Field: Component<SelectProps> = (props) => {
       >
         <Select.Trigger
           class="select__trigger"
-          style={{'background-color': vars.select.backgroundColor}}
+          style={{'background-color': vars.interactive.background}}
         >
           <Select.Value<SelectOption> class="select__value">
             {(state) => state.selectedOption().label}
@@ -57,7 +57,7 @@ export const Field: Component<SelectProps> = (props) => {
           <Select.Content
             style={{
               'font-size': vars.select.fontSize,
-              'background-color': vars.select.backgroundColor,
+              'background-color': vars.interactive.background,
             }}
             class="select__content"
           >

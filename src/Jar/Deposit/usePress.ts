@@ -1,5 +1,5 @@
-import {holdTimeMs} from '../constants';
-import {selectedUserId, setHeld} from '../signals/send';
+import {holdTimeMs} from '@/constants';
+import {selectedUserId, setHeld} from '@/signals/send';
 import {send} from './send';
 
 export const usePress = () => {
