@@ -9,9 +9,6 @@ const Container = styled('div')({
   flexDirection: 'column',
   position: 'relative',
 
-  // Small tablet
-  maxHeight: '900px',
-  maxWidth: '600px',
   height: '100%',
   width: '100%',
 

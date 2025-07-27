@@ -13,13 +13,14 @@ export const remove = async (ref: DocumentReference) => {
     await runTransaction(db, async (transaction) => {
       const doc = await transaction.get(ref);
 
-      if (doc.exists()) {
-        transaction.delete(ref);
+      if (!doc.exists()) {
+        throw new Error("Doc doesn't exist");
       }
 
-      throw new Error("Doc doesn't exist");
+      transaction.delete(ref);
     });
 
+    // Lazy way to not have to deal with syncing the store
     sortedEntries[1].refetch();
     setMode(Mode.Deposit);
   } catch (error) {
