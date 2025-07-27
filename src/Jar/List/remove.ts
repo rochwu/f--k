@@ -1,6 +1,5 @@
 import {db} from '@/firebase';
-import {Mode, setMode} from '@/signals/meta';
-import {sortedEntries} from '@/signals/store';
+import {reload} from '@/signals/reload';
 import {DocumentReference, runTransaction} from 'firebase/firestore';
 
 export const remove = async (ref: DocumentReference) => {
@@ -21,8 +20,7 @@ export const remove = async (ref: DocumentReference) => {
     });
 
     // Lazy way to not have to deal with syncing the store
-    sortedEntries[1].refetch();
-    setMode(Mode.Deposit);
+    reload();
   } catch (error) {
     console.error('I fucked up remove', error);
   }
