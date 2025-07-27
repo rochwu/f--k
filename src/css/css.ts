@@ -10,17 +10,20 @@ export const {vars, root} = createCssVars(
       fontSize: '48px',
     },
     fontFamily: '"Parkinsans", sans-serif',
+    delete: '#DC143C',
   },
-  (previous) => ({
+  (base) => ({
+    interactive: {
+      hint: base.progress,
+      selection: 'black',
+      background: 'white',
+    },
     select: {
       fontSize: '32px',
-      backgroundColor: 'white',
-      color: 'black',
     },
     user: {
       total: {
-        color: '#DC143C',
-        backgroundColor: previous.background,
+        backgroundColor: base.background,
         size: '32px',
         fontSize: '16px',
       },

@@ -1,6 +1,6 @@
 import {styled} from 'solid-styled-components';
-import {vars} from '../css';
-import {total} from '../signals/store';
+import {vars} from '@/css';
+import {total} from '@/signals/store';
 
 const Text = styled('div')({
   position: 'absolute',

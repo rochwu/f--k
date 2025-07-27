@@ -1,6 +1,6 @@
-import {Select, SelectOption} from '../Select';
-import {selectedUserId, setSelectedUserId} from '../signals/send';
-import {UsersById, usersById} from '../signals/store';
+import {Select, SelectOption} from './Select';
+import {selectedUserId, setSelectedUserId} from '@/signals/send';
+import {UsersById, usersById} from '@/signals/store';
 import {Label} from './Label';
 import {Placeholder} from './Placeholder';
 

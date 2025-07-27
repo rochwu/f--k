@@ -1247,6 +1247,18 @@
   dependencies:
     tslib "^2.8.0"
 
+"@tabler/icons-solidjs@^3.34.1":
+  version "3.34.1"
+  resolved "https://registry.yarnpkg.com/@tabler/icons-solidjs/-/icons-solidjs-3.34.1.tgz#b00004fac51829ac76080a043cf414da308d23b5"
+  integrity sha512-OHE2zeO1c9o2PV4vgih/4siNT0mcvlQSmbWE85LsdbB6VKx1XOfDmkg9POc7PHJBVESJ7SJK5gXUFKGFK0P15g==
+  dependencies:
+    "@tabler/icons" "3.34.1"
+
+"@tabler/icons@3.34.1":
+  version "3.34.1"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-3.34.1.tgz#a04a8cf79a5ebdcc44796dfa3de51d04811d2f9f"
+  integrity sha512-9gTnUvd7Fd/DmQgr3MKY+oJLa1RfNsQo8c/ir3TJAWghOuZXodbtbVp0QBY2DxWuuvrSZFys0HEbv1CoiI5y6A==
+
 "@types/babel__core@^7.20.4":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"

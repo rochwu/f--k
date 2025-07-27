@@ -8,7 +8,7 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import {createResource, createSignal} from 'solid-js';
-import {db} from '../firebase';
+import {db} from '@/firebase';
 import {setSelectedUserId} from './send';
 
 export const [jar] = createSignal(
@@ -53,6 +53,7 @@ export const usersById = createResource(async () => {
 export type Entry = {
   userId: string;
   created: Timestamp;
+  ref: DocumentReference;
 };
 
 export const sortedEntries = createResource(async () => {
@@ -68,6 +69,7 @@ export const sortedEntries = createResource(async () => {
     sortedEntries.push({
       userId: user.id,
       created,
+      ref: entry.ref,
     });
   });
 
