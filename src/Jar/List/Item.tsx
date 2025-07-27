@@ -1,10 +1,16 @@
-import {Component, createSignal, Match, Switch} from 'solid-js';
+import {vars} from '@/css';
+import {
+  IconProps,
+  IconTrashOff,
+  IconTrashX,
+  IconTrashXFilled,
+} from '@tabler/icons-solidjs';
+import {DocumentReference} from 'firebase/firestore';
+import {Component, createSignal, Show} from 'solid-js';
+import {Dynamic} from 'solid-js/web';
 import {styled} from 'solid-styled-components';
 import {entry} from '../entry';
-import {vars} from '@/css';
-import {IconTrashX, IconTrashXFilled} from '@tabler/icons-solidjs';
 import {remove} from './remove';
-import {DocumentReference} from 'firebase/firestore';
 
 type Props = ReturnType<typeof entry> & {
   ref: DocumentReference;
@@ -25,14 +31,33 @@ const DateTime = styled('div')({
   color: vars.interactive.hint,
 });
 
-const Start = styled('div')({});
+const Start = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+});
 
-const End = styled('button')({
+const End = styled('div')({
+  display: 'flex',
+  gap: vars.gap,
+});
+
+const Button = styled('button')({
   all: 'unset',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  cursor: 'pointer',
+  height: vars.buttonSize,
+  aspectRatio: '1',
 });
+
+const iconSize = '32px';
+
+const iconProps: IconProps = {
+  size: iconSize, // The way Icon uses size doesn't really work with CSS vars
+  color: vars.delete,
+};
 
 export const Item: Component<Props> = (props) => {
   const [unlocked, setUnlocked] = createSignal(false);
@@ -57,24 +82,32 @@ export const Item: Component<Props> = (props) => {
     }
   };
 
+  const style = () => {
+    if (unlocked()) {
+      return {
+        outline: `2px solid ${vars.delete}`,
+      };
+    }
+  };
+
   return (
-    <Container>
+    <Container style={style()}>
       <Start>
         <Name>{props.who}</Name>
         <DateTime>{`${props.date ? props.date + ' ' : ''}${props.time}`}</DateTime>
       </Start>
-      <End onFocusOut={lock} onClick={click}>
-        <Switch>
-          <Match when={unlocked() === false}>
-            <IconTrashX color={vars.delete} />
-          </Match>
-          <Match when={unlocked() === true}>
-            <IconTrashXFilled
-              color={vars.delete}
-              style={{transform: 'scale(1.25)'}}
-            />
-          </Match>
-        </Switch>
+      <End>
+        <Button onClick={click} onFocusOut={lock}>
+          <Dynamic
+            component={unlocked() ? IconTrashXFilled : IconTrashX}
+            {...iconProps}
+          />
+        </Button>
+        <Show when={unlocked()}>
+          <Button onClick={lock}>
+            <IconTrashOff size={iconSize} />
+          </Button>
+        </Show>
       </End>
     </Container>
   );
